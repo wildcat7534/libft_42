@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmassol <cmassol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 19:15:17 by cmassol           #+#    #+#             */
-/*   Updated: 2024/06/06 18:12:30 by cmassol          ###   ########.fr       */
+/*   Created: 2024/06/06 15:08:47 by cmassol           #+#    #+#             */
+/*   Updated: 2024/06/06 16:28:17 by cmassol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+t_list	*ft_lstlast(t_list *lst)
 {
-	void	*ptr;
-
-	if (size && count > SIZE_MAX / size)
+	if (!lst)
 		return (NULL);
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
+
+/*
+Renvoie le dernier élément de la liste.
+*/

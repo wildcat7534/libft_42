@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cmassol <cmassol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 19:15:17 by cmassol           #+#    #+#             */
-/*   Updated: 2024/06/06 18:12:30 by cmassol          ###   ########.fr       */
+/*   Created: 2024/06/06 13:03:55 by cmassol           #+#    #+#             */
+/*   Updated: 2024/06/06 15:08:27 by cmassol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+t_list	*ft_lstnew(void *content)
 {
-	void	*ptr;
+	t_list	*new;
 
-	if (size && count > SIZE_MAX / size)
+	new = malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
-	ptr = malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }
+
+/*
+Alloue (avec malloc(3)) et renvoie un nouvel
+élément. La variable membre ’content’ est
+initialisée à l’aide de la valeur du paramètre
+’content’. La variable ’next’ est initialisée à
+NULL.
+*/
